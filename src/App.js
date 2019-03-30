@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import lawnData from "./components/lawnData";
+import NavBar from "./components/navbar";
+import Lawn from "./components/lawn1";
+import ObjectTable from "./components/objTable";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    squares: JSON.parse(JSON.stringify(lawnData))
+  };
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <NavBar />
+        <main className="container">
+          <Lawn squares={this.state.squares} />
+          <ObjectTable />
+        </main>
+      </React.Fragment>
     );
   }
 }
